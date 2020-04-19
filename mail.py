@@ -11,42 +11,93 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# def write_recipient():
-#     if path.exists("recipient.txt"):
-#         pass
-#     else:
-#         recipient = input("Please enter an email you would like to get the results from: ")
-#         print(recipient)
-#         file = open("recipient.txt", "w")
-#         file.write(recipient)
-#         file.close()
-#         return recipient
-#
-#
-# def open_recipient():
-#     x = open("recipient.txt")
-#     y = x.read()
-#     return y
+def write_recipient():
+    if path.exists("recipient.txt"):
+        pass
+    else:
+        recipient = input("Enter the reciepient's email address: ")
+        file = open("recipient.txt", "w")
+        file.write(recipient)
+        file.close()
+        return recipient
+
+
+def open_recipient():
+    x = open("recipient.txt")
+    y = x.read()
+    return y
+
+
+def write_sender():
+    if path.exists("sender.txt"):
+        pass
+    else:
+        sender = input("Enter the sender's email address: ")
+
+        file = open("sender.txt", "w")
+        file.write(sender)
+        file.close()
+        return sender
+
+
+def open_sender():
+    x = open("sender.txt")
+    y = x.read()
+    return y
+
+
+def write_password():
+    if path.exists("password.txt"):
+        pass
+    else:
+        password = input("Please enter the password for the sender's email address: ")
+        file = open("password.txt", "w")
+        file.write(password)
+        file.close()
+        return password
+
+
+def open_password():
+    x = open("password.txt")
+    y = x.read()
+    return y
 
 
 def send_email():
     # x = write_recipient()
+    # y = write_sender()
+    # z = write_password()
     currentDT = datetime.datetime.now()
     subject = "An email with attachment from Python"
     body = "Attached is a .csv file of listings based off of what you inputted. This was scraped at " + currentDT.strftime(
         "%Y-%m-%d %H:%M:%S")
-    sender_email = "diegod9655@yahoo.com"
 
+    # if not path.exists("sender.txt"):
+    #     sender_email = y
+    # else:
+    #     y = open_sender()
+    #     sender_email = y
+    #
     # if not path.exists("recipient.txt"):
     #     receiver_email = x
     # else:
     #     x = open_recipient()
     #     receiver_email = x
+    #
+    # if not path.exists("password.txt"):
+    #     password = z
+    # else:
+    #     z = open_password()
+    #     password = z
 
-    receiver_email = "diego.delgado@comcast.net"
+    # receiver_email = "diego.delgado@comcast.net"
 
     # password = os.environ.get("SECRET_KEY")
-    password = "Stockton2020!"
+
+    sender_email = "ddphillyfan@gmail.com"
+    password = "yotykzushkhaieke"
+    receiver_email = "diego.delgado@comcast.net"
+
 
     # Create a multipart message and set headers
     message = MIMEMultipart()
@@ -82,6 +133,6 @@ def send_email():
 
     # Log in to server using secure context and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.mail.yahoo.com", 465, context=context) as server:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, text)

@@ -5,20 +5,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import pandas as pd
-from send_email import *
+from mail import *
 from url import *
 
 
 class Job:
 
     def __init__(self):
-
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+
         # self.driver = webdriver.Firefox()
         self.delay = 10  # The delay the driver gives when loading the web page
 
@@ -133,6 +134,7 @@ def open_url():
 
 
 def main():
+    send_email()
     currentDT = datetime.datetime.now()
     x = write_url()
     scraper = Job()
@@ -144,5 +146,5 @@ def main():
     scraper.kill()
     dictionary_of_listings = scraper.organizeResults(results)
     file_path = scraper.to_csv(dictionary_of_listings)
-    send_email()
+
     print("Successful scrape at " + currentDT.strftime("%Y-%m-%d %H:%M:%S"))
