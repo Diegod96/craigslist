@@ -20,10 +20,8 @@ google-resumable-media==0.4.1
 googleapis-common-protos==1.6.0
 grpcio==1.24.1
 httplib2==0.14.0
-idna==2.9
-mkl-fft==1.0.15
-mkl-random==1.1.0
-mkl-service==2.3.0
+
+
 msgpack==0.6.2
 numpy==1.18.1
 pandas==1.0.3
