@@ -95,8 +95,8 @@ def send_email():
     # password = os.environ.get("SECRET_KEY")
 
     sender_email = "ddphillyfan@gmail.com"
-    password = os.environ.get("PASSWORD")
-    # password = "yotykzushkhaieke"
+    # password = os.environ.get("PASSWORD")
+    password = "yotykzushkhaieke"
     receiver_email = "diego.delgado@comcast.net"
 
 
