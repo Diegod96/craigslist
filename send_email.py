@@ -35,7 +35,7 @@ def send_email():
     subject = "An email with attachment from Python"
     body = "Attached is a .csv file of listings based off of what you inputted. This was scraped at " + currentDT.strftime(
         "%Y-%m-%d %H:%M:%S")
-    sender_email = "ddphillyfan@gmail.com"
+    sender_email = "diegod9655@yahoo.com"
 
     # if not path.exists("recipient.txt"):
     #     receiver_email = x
@@ -82,6 +82,6 @@ def send_email():
 
     # Log in to server using secure context and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+    with smtplib.SMTP_SSL("smtp.mail.yahoo.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, text)
