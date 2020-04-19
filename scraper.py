@@ -1,9 +1,11 @@
 
+import os
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import pandas as pd
+from send_email import *
 from url import *
 
 
@@ -97,11 +99,14 @@ class Job:
     @staticmethod
     def to_csv(dictionary):
         df = pd.DataFrame(dictionary)
-        df.to_csv('data.csv', index=False)
+        directory = os.path.dirname(os.path.realpath(__file__))
+        filename = "scrapedfile.csv"
+        file_path = os.path.join(directory, filename)
+        df.to_csv(file_path)
+        return file_path
 
 
 def write_url():
-
     if path.exists("url.txt"):
         pass
     else:
@@ -113,7 +118,6 @@ def write_url():
         return url
 
 
-
 def open_url():
     x = open('url.txt', 'r')
     y = x.read()
@@ -122,8 +126,7 @@ def open_url():
 
 
 def main():
-
-
+    currentDT = datetime.datetime.now()
     x = write_url()
     scraper = Job()
     if not path.exists("url.txt"):
@@ -133,30 +136,6 @@ def main():
         results = scraper.load_craigslist_url(x)
     scraper.kill()
     dictionary_of_listings = scraper.organizeResults(results)
-    scraper.to_csv(dictionary_of_listings)
-
-
-
-
-# def main():
-#     if not path.exists('url.txt'):
-#         url = UrlObj().url
-#         text_file = open('url.txt', 'w')
-#         text_file.write(url)
-#
-#     x = open('url.txt', 'r')
-#     y = x.read()
-#     scraper = Job()
-#     results = scraper.load_craigslist_url(y)
-#     scraper.kill()
-#     dictionary_of_listings = scraper.organizeResults(results)
-#     scraper.to_csv(dictionary_of_listings)
-
-
-# if __name__ == '__main__':
-#
-#     main()
-#     cron = CronTab(user='username')
-#     # scheduler = BlockingScheduler()
-#     # scheduler.add_job(main, 'interval', hours=1)
-#     # scheduler.start()
+    file_path = scraper.to_csv(dictionary_of_listings)
+    send_email()
+    print("Successful scrape at " + currentDT.strftime("%Y-%m-%d %H:%M:%S"))

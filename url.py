@@ -1,4 +1,5 @@
-from os import path
+
+from gui import *
 
 class UrlObj:
     def __init__(self):
