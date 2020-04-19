@@ -12,6 +12,8 @@ from url import *
 class Job:
 
     def __init__(self):
+
+        # Creates Chrome driver for Heroku
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         chrome_options.add_argument("--headless")
@@ -20,7 +22,7 @@ class Job:
         self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
-        # self.driver = webdriver.Firefox()
+
         self.delay = 10  # The delay the driver gives when loading the web page
 
     # Load up the web page
@@ -104,6 +106,8 @@ class Job:
 
         return list_of_attributes
 
+
+    # Creating csv file
     @staticmethod
     def to_csv(dictionary):
         df = pd.DataFrame(dictionary)
@@ -111,40 +115,17 @@ class Job:
         filename = "scrapedfile.csv"
         file_path = os.path.join(directory, filename)
         df.to_csv(file_path)
-        return file_path
-
-
-def write_url():
-    if path.exists("url.txt"):
-        pass
-    else:
-        url = UrlObj().url
-        print(url)
-        file = open("url.txt", "w")
-        file.write(url)
-        file.close()
-        return url
-
-
-def open_url():
-    x = open('url.txt', 'r')
-    y = x.read()
-    return y
 
 
 
 def main():
     send_email()
     currentDT = datetime.datetime.now()
-    x = write_url()
     scraper = Job()
-    if not path.exists("url.txt"):
-        results = scraper.load_craigslist_url(x)
-    else:
-        x = open_url()
-        results = scraper.load_craigslist_url(x)
+    url = UrlObj().url
+    results = scraper.load_craigslist_url(url)
     scraper.kill()
     dictionary_of_listings = scraper.organizeResults(results)
-    file_path = scraper.to_csv(dictionary_of_listings)
+    scraper.to_csv(dictionary_of_listings)
 
     print("Successful scrape at " + currentDT.strftime("%Y-%m-%d %H:%M:%S"))
