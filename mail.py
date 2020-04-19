@@ -12,9 +12,9 @@ def send_email():
     body = "Attached is a .csv file of listings based off of what you inputted. This was scraped at " + currentDT.strftime(
         "%Y-%m-%d %H:%M:%S")
 
-    sender_email = "ddphillyfan@gmail.com"
-    password = "yotykzushkhaieke"
-    receiver_email = "diego.delgado@comcast.net"
+    sender_email = "sender@mail.com"
+    password = "YOURSUPERSECRETPASSWORD"
+    receiver_email = "reciever@mail.com"
 
 
     # Create a multipart message and set headers
@@ -50,6 +50,7 @@ def send_email():
     text = message.as_string()
 
     # Log in to server using secure context and send email
+    # Server is set up for gmail
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
