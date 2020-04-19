@@ -11,37 +11,39 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def write_recipient():
-    if path.exists("recipient.txt"):
-        pass
-    else:
-        recipient = input("Please enter an email you would like to get the results from: ")
-        print(recipient)
-        file = open("recipient.txt", "w")
-        file.write(recipient)
-        file.close()
-        return recipient
-
-
-def open_recipient():
-    x = open("recipient.txt")
-    y = x.read()
-    return y
+# def write_recipient():
+#     if path.exists("recipient.txt"):
+#         pass
+#     else:
+#         recipient = input("Please enter an email you would like to get the results from: ")
+#         print(recipient)
+#         file = open("recipient.txt", "w")
+#         file.write(recipient)
+#         file.close()
+#         return recipient
+#
+#
+# def open_recipient():
+#     x = open("recipient.txt")
+#     y = x.read()
+#     return y
 
 
 def send_email():
-    x = write_recipient()
+    # x = write_recipient()
     currentDT = datetime.datetime.now()
     subject = "An email with attachment from Python"
     body = "Attached is a .csv file of listings based off of what you inputted. This was scraped at " + currentDT.strftime(
         "%Y-%m-%d %H:%M:%S")
     sender_email = "ddphillyfan@gmail.com"
 
-    if not path.exists("recipient.txt"):
-        receiver_email = x
-    else:
-        x = open_recipient()
-        receiver_email = x
+    # if not path.exists("recipient.txt"):
+    #     receiver_email = x
+    # else:
+    #     x = open_recipient()
+    #     receiver_email = x
+
+    receiver_email = "diego.delgado@comcast.net"
 
     password = os.environ.get("SECRET_KEY")
 
