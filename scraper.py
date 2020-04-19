@@ -12,7 +12,7 @@ from url import *
 class Job:
 
     def __init__(self):
-        self.driver = webdriver.Firefox(r"C:\Users\diego\development\craigslist\geckodriver.exe")
+        self.driver = webdriver.Firefox("geckodriver.exe")
         self.delay = 10  # The delay the driver gives when loading the web page
 
     # Load up the web page
