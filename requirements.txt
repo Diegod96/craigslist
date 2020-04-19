@@ -22,6 +22,8 @@ grpcio==1.24.1
 httplib2==0.14.0
 idna==2.9
 msgpack==0.6.2
+NumPy=1.13.3
+pandas==0.20.3
 protobuf==3.10.0
 psycopg2==2.8.4
 pyasn1==0.4.7
@@ -30,12 +32,14 @@ pycparser==2.20
 pyOpenSSL==19.1.0
 PySocks==1.7.1
 python-dotenv==0.13.0
+python-dateutil==2.6.1
 python-http-client==3.1.0
 pytz==2019.3
 PyYAML==5.3.1
 rsa==4.0
 schedule==0.6.0
 selenium==3.141.0
+setuptools==24.2.0
 sendgrid==6.0.5
 six==1.14.0
 tzlocal==2.0.0
