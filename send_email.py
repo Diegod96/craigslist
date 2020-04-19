@@ -45,7 +45,8 @@ def send_email():
 
     receiver_email = "diego.delgado@comcast.net"
 
-    password = os.environ.get("SECRET_KEY")
+    # password = os.environ.get("SECRET_KEY")
+    password = "Stockton2020!"
 
     # Create a multipart message and set headers
     message = MIMEMultipart()
