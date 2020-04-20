@@ -22,3 +22,4 @@ This is my Craigslist Scraper application that scrapes listing from a user gener
 * Now you need to allocate a dyno to do the work. Type 'heroku ps:scale worker=1'
 * If you want to check the logs to make sure its working type 'heroku logs --tail'
 
+![Screenshot_2020-04-20 myscrapingapp2 Heroku](https://user-images.githubusercontent.com/25403763/79792235-8c09d900-831c-11ea-931c-83db8abbf16c.png)
