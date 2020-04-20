@@ -23,3 +23,6 @@ This is my Craigslist Scraper application that scrapes listing from a user gener
 * If you want to check the logs to make sure its working type 'heroku logs --tail'
 
 ![Screenshot_2020-04-20 myscrapingapp2 Heroku](https://user-images.githubusercontent.com/25403763/79792235-8c09d900-831c-11ea-931c-83db8abbf16c.png)
+
+![Screenshot_2020-04-20 An email with attachment from Python - ddphillyfan gmail com - Gmail](https://user-images.githubusercontent.com/25403763/79792519-0c303e80-831d-11ea-82e4-bfd3cd362b7b.png)
+
