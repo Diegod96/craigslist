@@ -39,7 +39,7 @@ PyYAML==5.3.1
 rsa==4.0
 schedule==0.6.0
 selenium==3.141.0
-setuptools==24.2.0
+setuptools==65.5.1
 sendgrid==6.0.5
 six==1.14.0
 tzlocal==2.0.0
